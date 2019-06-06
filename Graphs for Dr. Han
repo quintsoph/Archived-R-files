@@ -1,0 +1,49 @@
+####Make Graphs for Dr. Han
+setwd("E:/Bioinformatics Lab/Cancer Data/Make Graphs")
+readfile<- read.table("L1HSVSTcompare.txt", header=TRUE, row.names=1)
+#subset out each cancer type
+BLCA<- subset(readfile, type == "BLCA", select=c("VSTcancer", "VSTnormal"))
+BRCA<- subset(readfile, type == "BRCA", select=c("VSTcancer", "VSTnormal"))
+CHOL<- subset(readfile, type == "CHOL", select=c("VSTcancer", "VSTnormal"))
+COAD<- subset(readfile, type == "COAD", select=c("VSTcancer", "VSTnormal"))
+ESCA<- subset(readfile, type == "ESCA", select=c("VSTcancer", "VSTnormal"))
+HNSC<- subset(readfile, type == "HNSC", select=c("VSTcancer", "VSTnormal"))
+KICH<- subset(readfile, type == "KICH", select=c("VSTcancer", "VSTnormal"))
+KIRC<- subset(readfile, type == "KIRC", select=c("VSTcancer", "VSTnormal"))
+KIRP<- subset(readfile, type == "KIRP", select=c("VSTcancer", "VSTnormal"))
+LIHC<- subset(readfile, type == "LIHC", select=c("VSTcancer", "VSTnormal"))
+LUAD<- subset(readfile, type == "LUAD", select=c("VSTcancer", "VSTnormal"))
+LUSC<- subset(readfile, type == "LUSC", select=c("VSTcancer", "VSTnormal"))
+PRAD<- subset(readfile, type == "PRAD", select=c("VSTcancer", "VSTnormal"))
+READ<- subset(readfile, type == "READ", select=c("VSTcancer", "VSTnormal"))
+STAD<- subset(readfile, type == "STAD", select=c("VSTcancer", "VSTnormal"))
+THCA<- subset(readfile, type == "THCA", select=c("VSTcancer", "VSTnormal"))
+UCEC<- subset(readfile, type == "UCEC", select=c("VSTcancer", "VSTnormal"))
+
+
+library("ggplot2")
+legend_title<- "Cancer Types"
+ggplot(NULL) + 
+  geom_jitter(aes(BLCA[,c("VSTnormal")], BLCA[,c("VSTcancer")], color="BLCA")) + geom_smooth(aes(BLCA[,c("VSTnormal")], BLCA[,c("VSTcancer")]), method=lm, se=FALSE, color="burlywood1") +
+  geom_jitter(aes(BRCA[,c("VSTnormal")], BRCA[,c("VSTcancer")], color="BRCA")) + geom_smooth(aes(BRCA[,c("VSTnormal")], BRCA[,c("VSTcancer")]), method=lm, se=FALSE, color="cadetblue1") +
+  geom_jitter(aes(CHOL[,c("VSTnormal")], CHOL[,c("VSTcancer")], color="CHOL")) + geom_smooth(aes(CHOL[,c("VSTnormal")], CHOL[,c("VSTcancer")]), method=lm, se=FALSE, color="chartreuse1") +
+  geom_jitter(aes(COAD[,c("VSTnormal")], COAD[,c("VSTcancer")], color="COAD")) + geom_smooth(aes(COAD[,c("VSTnormal")], COAD[,c("VSTcancer")]), method=lm, se=FALSE, color="chocolate1") +
+  geom_jitter(aes(ESCA[,c("VSTnormal")], ESCA[,c("VSTcancer")], color="ESCA")) + geom_smooth(aes(ESCA[,c("VSTnormal")], ESCA[,c("VSTcancer")]), method=lm, se=FALSE, color="coral1") +
+  geom_jitter(aes(HNSC[,c("VSTnormal")], HNSC[,c("VSTcancer")], color="HNSC")) + geom_smooth(aes(HNSC[,c("VSTnormal")], HNSC[,c("VSTcancer")]), method=lm, se=FALSE, color="darkblue") +
+  geom_jitter(aes(KICH[,c("VSTnormal")], KICH[,c("VSTcancer")], color="KICH")) + geom_smooth(aes(KICH[,c("VSTnormal")], KICH[,c("VSTcancer")]), method=lm, se=FALSE, color="darkgoldenrod3") +
+  geom_jitter(aes(KIRC[,c("VSTnormal")], KIRC[,c("VSTcancer")], color="KIRC")) + geom_smooth(aes(KIRC[,c("VSTnormal")], KIRC[,c("VSTcancer")]), method=lm, se=FALSE, color="darkkhaki") +
+  geom_jitter(aes(KIRP[,c("VSTnormal")], KIRP[,c("VSTcancer")], color="KIRP")) + geom_smooth(aes(KIRP[,c("VSTnormal")], KIRP[,c("VSTcancer")]), method=lm, se=FALSE, color="darkolivegreen3") +
+  geom_jitter(aes(LIHC[,c("VSTnormal")], LIHC[,c("VSTcancer")], color="LIHC")) + geom_smooth(aes(LIHC[,c("VSTnormal")], LIHC[,c("VSTcancer")]), method=lm, se=FALSE, color="lightsalmon") +
+  geom_jitter(aes(LUAD[,c("VSTnormal")], LUAD[,c("VSTcancer")], color="LUAD")) + geom_smooth(aes(LUAD[,c("VSTnormal")], LUAD[,c("VSTcancer")]), method=lm, se=FALSE, color="black") +
+  geom_jitter(aes(LUSC[,c("VSTnormal")], LUSC[,c("VSTcancer")], color="LUSC")) + geom_smooth(aes(LUSC[,c("VSTnormal")], LUSC[,c("VSTcancer")]), method=lm, se=FALSE, color="darkslategray") +
+  geom_jitter(aes(PRAD[,c("VSTnormal")], PRAD[,c("VSTcancer")], color="PRAD")) + geom_smooth(aes(PRAD[,c("VSTnormal")], PRAD[,c("VSTcancer")]), method=lm, se=FALSE, color="deeppink2") +
+  geom_jitter(aes(READ[,c("VSTnormal")], READ[,c("VSTcancer")], color="READ")) + geom_smooth(aes(READ[,c("VSTnormal")], READ[,c("VSTcancer")]), method=lm, se=FALSE, color="deepskyblue2") +
+  geom_jitter(aes(STAD[,c("VSTnormal")], STAD[,c("VSTcancer")], color="STAD")) + geom_smooth(aes(STAD[,c("VSTnormal")], STAD[,c("VSTcancer")]), method=lm, se=FALSE, color="darkred") +
+  geom_jitter(aes(THCA[,c("VSTnormal")], THCA[,c("VSTcancer")], color="THCA")) + geom_smooth(aes(THCA[,c("VSTnormal")], THCA[,c("VSTcancer")]), method=lm, se=FALSE, color="brown1") +
+  geom_jitter(aes(UCEC[,c("VSTnormal")], UCEC[,c("VSTcancer")], color="UCEC")) + geom_smooth(aes(UCEC[,c("VSTnormal")], UCEC[,c("VSTcancer")]), method=lm, se=FALSE, color="springgreen3") +
+  labs(x = "VSTNormal", y = "VSTCancer", title="L1HS VST Compare")+
+  theme_bw()+
+  theme(legend.position="right")+ 
+	scale_color_manual(legend_title, values = c("burlywood1","cadetblue1", "chartreuse1", "chocolate1", "coral1", "darkblue", "darkgoldenrod3", "darkkhaki", "darkolivegreen3", "lightsalmon", "black", "darkslategray", "deeppink2", "deepskyblue2",
+		"darkred", "brown1", "springgreen3")) 
+
